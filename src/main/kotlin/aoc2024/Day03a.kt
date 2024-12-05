@@ -9,10 +9,8 @@ object Day03a {
     val regex = Regex("""mul\((\d+),(\d+)\)""")
 
     fun eval(match: MatchResult): Int {
-        val (x, y) = match.groups.toList()
-            .slice(1..2)
-            .map { it!!.value.toInt() }
-        return x * y
+        val (_, x, y) = match.groupValues
+        return x.toInt() * y.toInt()
     }
 
     val result = input.flatMap { line ->

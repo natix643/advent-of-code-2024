@@ -14,19 +14,11 @@ object Day03b {
 
         for (line in lines) {
             for (match in regex.findAll(line)) {
-                when (match.groupValues.first()) {
-                    "do()" -> {
-                        on = true
-                    }
-                    "don't()" -> {
-                        on = false
-                    }
-                    else -> {
-                        if (on) {
-                            val (x, y) = match.groupValues.toList().slice(1..2).map { it.toInt() }
-                            sum += x * y
-                        }
-                    }
+                val (instruction, x, y) = match.groupValues
+                when {
+                    instruction == "do()" -> on = true
+                    instruction == "don't()" -> on = false
+                    on -> sum += x.toInt() * y.toInt()
                 }
             }
         }
