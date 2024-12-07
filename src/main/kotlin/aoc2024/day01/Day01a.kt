@@ -3,7 +3,7 @@ package aoc2024.day01
 import aoc2024.Input
 import kotlin.math.absoluteValue
 
-object Day01a : Day01() {
+object Day01a {
 
     val input = Input.day01
     val pairs = input.toPairs()

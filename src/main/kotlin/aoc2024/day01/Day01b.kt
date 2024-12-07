@@ -2,7 +2,7 @@ package aoc2024.day01
 
 import aoc2024.Input
 
-object Day01b : Day01() {
+object Day01b {
 
     val input = Input.day01
     val pairs = input.toPairs()

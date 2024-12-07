@@ -2,7 +2,7 @@ package aoc2024.day02
 
 import aoc2024.Input
 
-object Day02b : Day02() {
+object Day02b {
 
     fun isReportSafe(report: IntList): Boolean {
         return report.steps().isSafe() ||

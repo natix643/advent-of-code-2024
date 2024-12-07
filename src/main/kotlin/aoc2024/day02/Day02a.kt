@@ -2,7 +2,7 @@ package aoc2024.day02
 
 import aoc2024.Input
 
-object Day02a : Day02() {
+object Day02a {
 
     fun isReportSafe(report: IntList): Boolean {
         return report.steps().isSafe()
@@ -13,7 +13,6 @@ object Day02a : Day02() {
     val result = reports.count {
         isReportSafe(it)
     }
-
 }
 
 fun main() {
