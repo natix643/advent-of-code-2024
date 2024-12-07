@@ -1,4 +1,6 @@
-package aoc2024
+package aoc2024.day03
+
+import aoc2024.Input
 
 object Day03b {
 

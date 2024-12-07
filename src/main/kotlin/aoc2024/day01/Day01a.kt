@@ -1,5 +1,6 @@
-package aoc2024
+package aoc2024.day01
 
+import aoc2024.Input
 import kotlin.math.absoluteValue
 
 object Day01a : Day01() {
