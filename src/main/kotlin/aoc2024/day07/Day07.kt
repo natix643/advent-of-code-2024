@@ -12,7 +12,7 @@ val example = """
     292: 11 6 16 20
 """.trimIndent().lines()
 
-typealias Operator = (Long, Long) -> Long
+typealias Operator = (x: Long, y: Long) -> Long
 
 data class Equation(
     val result: Long,
@@ -33,15 +33,14 @@ fun possibleResults(operands: List<Long>, operators: List<Operator>): Set<Long> 
     var results = setOf(operands.first())
 
     for (operand in operands.drop(1)) {
-        val previousResults = results
-        val currentResults = mutableSetOf<Long>()
+        val nextResults = mutableSetOf<Long>()
 
-        for (value in previousResults) {
+        for (previous in results) {
             for (operator in operators) {
-                currentResults += operator(value, operand)
+                nextResults += operator(previous, operand)
             }
         }
-        results = currentResults
+        results = nextResults
     }
     return results
 }
