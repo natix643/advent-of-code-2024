@@ -15,8 +15,8 @@ fun DenseFormat.expand(): Disk {
     var isFile = true
     var id = 0
 
-    for (blockSize in this) {
-        for (i in 1..blockSize) {
+    for (blockCount in this) {
+        for (i in 1..blockCount) {
             result += if (isFile) id else null
         }
         if (isFile) {

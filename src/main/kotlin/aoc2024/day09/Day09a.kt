@@ -8,18 +8,18 @@ object Day09a {
     fun Disk.rearrange(): Disk {
         val result = toMutableList()
 
-        var left = 0
-        var right = result.lastIndex
+        var leftBound = 0
+        var rightBound = result.lastIndex
 
 //    println(result.prettyFormat())
-        while (left < right) {
-            if (result[left] != null) {
-                left++
-            } else if (result[right] == null) {
-                right--
+        while (leftBound < rightBound) {
+            if (result[leftBound] != null) {
+                leftBound++
+            } else if (result[rightBound] == null) {
+                rightBound--
             } else {
-                result[left] = result[right]
-                result[right] = null
+                result[leftBound] = result[rightBound]
+                result[rightBound] = null
 //                println(result.prettyFormat())
             }
         }
