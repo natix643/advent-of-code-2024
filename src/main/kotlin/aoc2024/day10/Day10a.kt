@@ -53,17 +53,16 @@ object Day10a {
         10456732
     """.trimIndent().lines()
 
-    fun findFinishes(matrix: Matrix, start: Point): Set<Point> {
+    fun findEnds(matrix: Matrix, start: Point): Set<Point> {
         val queue = ArrayDeque(listOf(start))
         val seen = mutableSetOf(start)
-        val finishes = mutableSetOf<Point>()
+        val ends = mutableSetOf<Point>()
 
         while (queue.isNotEmpty()) {
             // println(queue)
-
             val current = queue.removeFirst()
             if (matrix[current] == 9) {
-                finishes += current
+                ends += current
             }
 
             val next = matrix.neighbors(current).filter {
@@ -72,7 +71,7 @@ object Day10a {
             queue += next
             seen += next
         }
-        return finishes
+        return ends
     }
 
     val input = Input.day10
@@ -81,7 +80,7 @@ object Day10a {
     val starts = matrix.findStarts()
 
     val result = starts.sumOf {
-        findFinishes(matrix, it).size
+        findEnds(matrix, it).size
     }
 }
 
