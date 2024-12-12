@@ -1,6 +1,8 @@
 package aoc2024.day10
 
 import aoc2024.Input
+import aoc2024.common.Matrix
+import aoc2024.common.Point
 import aoc2024.expecting
 
 object Day10b {
@@ -55,14 +57,14 @@ object Day10b {
         }
     }
 
-    fun findPaths(matrix: Matrix, start: Point): List<Path> {
+    fun findPaths(matrix: Matrix<Int?>, start: Point): List<Path> {
         val queue = ArrayDeque<Path>().apply {
             add(Path(start))
         }
         val paths = mutableListOf<Path>()
 
         while (queue.isNotEmpty()) {
-             // println(queue)
+            // println(queue)
             val currentPath = queue.removeFirst()
             val lastPoint = currentPath.last
 
@@ -82,8 +84,8 @@ object Day10b {
 
     val input = Input.day10
 
-    val matrix = input.parseMatrix()
-    val starts = matrix.findStarts()
+    val matrix = parseMatrix(input)
+    val starts = matrix.findAll(0)
 
     val result = starts.sumOf {
         findPaths(matrix, it).size

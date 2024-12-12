@@ -1,6 +1,8 @@
 package aoc2024.day10
 
 import aoc2024.Input
+import aoc2024.common.Matrix
+import aoc2024.common.Point
 import aoc2024.expecting
 
 object Day10a {
@@ -53,7 +55,7 @@ object Day10a {
         10456732
     """.trimIndent().lines()
 
-    fun findEnds(matrix: Matrix, start: Point): Set<Point> {
+    fun findEnds(matrix: Matrix<Int?>, start: Point): Set<Point> {
         val queue = ArrayDeque(listOf(start))
         val seen = mutableSetOf(start)
         val ends = mutableSetOf<Point>()
@@ -76,8 +78,8 @@ object Day10a {
 
     val input = Input.day10
 
-    val matrix = input.parseMatrix()
-    val starts = matrix.findStarts()
+    val matrix = parseMatrix(input)
+    val starts = matrix.findAll(0)
 
     val result = starts.sumOf {
         findEnds(matrix, it).size
