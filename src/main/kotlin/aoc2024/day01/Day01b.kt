@@ -1,6 +1,6 @@
 package aoc2024.day01
 
-import aoc2024.Input
+import aoc2024.common.Input
 
 object Day01b {
 

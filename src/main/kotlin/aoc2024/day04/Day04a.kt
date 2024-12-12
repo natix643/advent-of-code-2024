@@ -1,6 +1,6 @@
 package aoc2024.day04
 
-import aoc2024.Input
+import aoc2024.common.Input
 import kotlin.math.min
 
 object Day04a {

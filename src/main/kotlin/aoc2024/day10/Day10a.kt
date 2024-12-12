@@ -1,9 +1,9 @@
 package aoc2024.day10
 
-import aoc2024.Input
+import aoc2024.common.Input
 import aoc2024.common.Matrix
 import aoc2024.common.Point
-import aoc2024.expecting
+import aoc2024.common.expecting
 
 object Day10a {
 

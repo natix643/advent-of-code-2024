@@ -1,7 +1,7 @@
 package aoc2024.day09
 
-import aoc2024.Input
-import aoc2024.expecting
+import aoc2024.common.Input
+import aoc2024.common.expecting
 import java.util.Collections.nCopies
 
 object Day09b {
