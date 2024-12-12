@@ -13,7 +13,7 @@ object Input {
     val day11 get() = readLines("Day11.txt")
 
     private fun readLines(filename: String): List<String> {
-        return javaClass.getResourceAsStream(filename)!!.bufferedReader().use {
+        return javaClass.getResourceAsStream("/aoc2024/$filename")!!.bufferedReader().use {
             it.readLines()
         }
     }
