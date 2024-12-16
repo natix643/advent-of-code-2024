@@ -49,20 +49,40 @@ class Matrix<T>(
         }
     }
 
-    fun format(formatItem: ((point: Point, item: T) -> Char)? = null): String {
+    fun findAll(predicate: (T) -> Boolean): List<Point> {
+        return items.indices.flatMap { y ->
+            items[y].indices.mapNotNull { x ->
+                if (predicate(items[y][x])) Point(x, y) else null
+            }
+        }
+    }
+
+    fun format(
+        maxX: Int? = null,
+        maxY: Int? = null,
+        formatItem: ((point: Point, item: T) -> Char)? = null
+    ): String {
         val builder = StringBuilder()
 
         items.forEachIndexed { y, row ->
-            row.forEachIndexed { x, item ->
-                if (formatItem != null) {
-                    builder.append(formatItem(Point(x, y), item))
-                } else {
-                    builder.append(item)
+            if (maxY == null || y <= maxY) {
+                row.forEachIndexed { x, item ->
+                    if (maxX == null || x <= maxX) {
+                        if (formatItem != null) {
+                            builder.append(formatItem(Point(x, y), item))
+                        } else {
+                            builder.append(item)
+                        }
+                    }
                 }
+                builder.appendLine()
             }
-            builder.appendLine()
         }
         return builder.toString()
+    }
+
+    fun clone(): Matrix<T> {
+        return Matrix(items.map { it.toMutableList() })
     }
 
     companion object {
