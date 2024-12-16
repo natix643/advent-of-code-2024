@@ -20,5 +20,5 @@ kotlin {
 }
 
 springBoot {
-    mainClass.set("aoc2024.day06.Day06aKt")
+    mainClass.set("aoc2024.day06.Day06bKt")
 }

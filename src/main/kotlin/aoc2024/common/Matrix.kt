@@ -17,14 +17,14 @@ class Matrix<T>(
         items[point.y][point.x] = value
     }
 
-    fun neighbors(p: Point): List<Point> {
-        return listOfNotNull(above(p), bellow(p), leftOf(p), rightOf(p))
+    fun neighbors(point: Point): List<Point> {
+        return listOfNotNull(above(point), bellow(point), leftOf(point), rightOf(point))
     }
 
-    fun above(p: Point): Point? = Point(p.x, p.y - 1).takeIf(::isInBounds)
-    fun bellow(p: Point): Point? = Point(p.x, p.y + 1).takeIf(::isInBounds)
-    fun leftOf(p: Point): Point? = Point(p.x - 1, p.y).takeIf(::isInBounds)
-    fun rightOf(p: Point): Point? = Point(p.x + 1, p.y).takeIf(::isInBounds)
+    fun above(point: Point): Point? = Point(point.x, point.y - 1).takeIf(::isInBounds)
+    fun bellow(point: Point): Point? = Point(point.x, point.y + 1).takeIf(::isInBounds)
+    fun leftOf(point: Point): Point? = Point(point.x - 1, point.y).takeIf(::isInBounds)
+    fun rightOf(point: Point): Point? = Point(point.x + 1, point.y).takeIf(::isInBounds)
 
     private fun isInBounds(point: Point): Boolean {
         return (point.y in items.indices) && (point.x in items[point.y].indices)
@@ -49,13 +49,13 @@ class Matrix<T>(
         }
     }
 
-    fun format(formatItem: ((T) -> Char)? = null): String {
+    fun format(formatItem: ((point: Point, item: T) -> Char)? = null): String {
         val builder = StringBuilder()
 
-        for (row in items) {
-            for (item in row) {
+        items.forEachIndexed { y, row ->
+            row.forEachIndexed { x, item ->
                 if (formatItem != null) {
-                    builder.append(formatItem(item))
+                    builder.append(formatItem(Point(x, y), item))
                 } else {
                     builder.append(item)
                 }
