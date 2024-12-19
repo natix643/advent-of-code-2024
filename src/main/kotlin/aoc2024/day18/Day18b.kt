@@ -19,7 +19,7 @@ object Day18b {
     }
 
     val input = Input.day18
-    val safeCorruptedPoints = exampleSize
+    val safeCorruptedPoints = inputSize
 
     val points = parsePoints(input)
     val target = maxCoords(points)
