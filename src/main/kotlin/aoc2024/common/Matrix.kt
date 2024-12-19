@@ -42,11 +42,7 @@ class Matrix<T>(
     }
 
     fun findAll(value: T): List<Point> {
-        return items.indices.flatMap { y ->
-            items[y].indices.mapNotNull { x ->
-                if (items[y][x] == value) Point(x, y) else null
-            }
-        }
+        return findAll { it == value }
     }
 
     fun findAll(predicate: (T) -> Boolean): List<Point> {
