@@ -10,6 +10,16 @@ data class Point(
 class Matrix<T>(
     private val items: List<MutableList<T>>
 ) {
+    fun rows(): List<List<T>> = items
+
+    fun columns(): List<List<T>> {
+        return items.first().indices.map { x ->
+            items.indices.map { y ->
+                items[y][x]
+            }
+        }
+    }
+
     operator fun get(point: Point): T? =
         items[point.y][point.x]
 
@@ -82,6 +92,10 @@ class Matrix<T>(
     }
 
     companion object {
+        fun parse(lines: List<String>): Matrix<Char> {
+            return parse(lines) { it }
+        }
+
         fun <T> parse(lines: List<String>, parseChar: (Char) -> T): Matrix<T> {
             return Matrix(
                 items = lines.map { line ->

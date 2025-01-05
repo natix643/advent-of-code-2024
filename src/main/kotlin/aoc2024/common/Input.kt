@@ -14,6 +14,7 @@ object Input {
     val day11 get() = readLines("Day11.txt")
     val day18 get() = readLines("Day18.txt")
     val day19 get() = readLines("Day19.txt")
+    val day25 get() = readLines("Day25.txt")
 
     private fun readLines(filename: String): List<String> {
         return javaClass.getResourceAsStream("/aoc2024/$filename")!!.bufferedReader().use {
